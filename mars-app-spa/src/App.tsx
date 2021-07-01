@@ -13,7 +13,7 @@ interface ClickContext {
   setClickCount: (clickCount: number) => void
 }
 
-const Context = React.createContext<ClickContext>({
+export const Context = React.createContext<ClickContext>({
   clickCount: 0,
   setClickCount: () => {}
 });
