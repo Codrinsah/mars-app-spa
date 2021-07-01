@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <NasaCard/>
+        <NasaCard
+          title="Title" imgSrc="Image link goes here" paragraph1="Paragraph 1" paragraph2="Paragraph 2"/>
         <a
           className="App-link"
           href="https://reactjs.org"

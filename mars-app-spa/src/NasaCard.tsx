@@ -1,12 +1,12 @@
 import React from 'react';
 
-const NasaCard: React.FC = () => {
+const NasaCard: React.FC<{title: string, imgSrc: string, paragraph1: string, paragraph2: string}> = (props) => {
     return(
         <div>
-            <h1> Title </h1>
-            <img src = "Image link goes here!"/>
-            <p> Paragraph 1 </p>
-            <p> Paragraph 2 </p>
+            <h1> {props.title} </h1>
+            <img src = {props.imgSrc} />
+            <p> {props.paragraph1} </p>
+            <p> {props.paragraph2} </p>
         </div>
     )
 };
