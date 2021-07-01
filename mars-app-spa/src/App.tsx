@@ -15,20 +15,18 @@ interface ClickContext {
 
 const Context = React.createContext<ClickContext>({
   clickCount: 0,
-  setClickCount: (clickCount) => {}
+  setClickCount: () => {}
 });
 
 function App() {
   const [clickCount, setClickCount] = useState(0)
-  const component4 = Component4
-  const component3 = Component3
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <NasaCard title="Title" imgSrc="Image link goes here" paragraph1="Paragraph 1" paragraph2="Paragraph 2"/>
         <Context.Provider value = {{clickCount, setClickCount}}>
-
+          <Component1 />
         </Context.Provider>
         <a
           className="App-link"
