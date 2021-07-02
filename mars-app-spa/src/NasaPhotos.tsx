@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from "react";
 import Select from "react-select";
 import axios from "axios"
+import {ImageList} from "./ImageList";
 
 const NasaPhotos: React.FC = () => {
     const [roversResponse, setRoverResponse] = useState<RoverResponse>({data: {rovers: []}});
     const [roverOptions, setRoverOptions] = useState<Options[]>([]);
     const [cameraOptions, setCameraOptions] = useState<Options[]>([])
     const [links, setLinks] = useState<string[]>([]);
+    const [roverName, setRoverName] = useState<string>("");
+    const [roverCamera, setRoverCamera] = useState<string>("");
 
     useEffect(() => {
         const roversResponsePromise: Promise<RoverResponse> = axios.get("http://localhost:8000/rovers")
@@ -32,6 +35,7 @@ const NasaPhotos: React.FC = () => {
                         return
                     }
                     const cameras = selectedRover.cameras.map((camera) => camera.name);
+                    setRoverName(name);
                     setCameraOptions(cameras.map((camera) => {
                         return {value: camera, label: camera}
                     }));
@@ -39,15 +43,21 @@ const NasaPhotos: React.FC = () => {
             }
             }/>
             <p>Select the type of camera:</p>
-            <Select options={cameraOptions}/>
+            <Select options={cameraOptions} onChange={(selected) => {
+                if (selected) {
+                    setRoverCamera(selected.value);
+                }
+            }
+            }/>
             <button onClick={() => {
-                const photoLinksResponse = axios.get<string[]>("http://localhost:8000");
+                const photoLinksResponse = axios.get<string[]>(`http://localhost:8000/rovers/${roverName}/photos/${roverCamera}`);
                 photoLinksResponse.then((photoLinks) => {
                     setLinks(photoLinks.data);
                 })
             }
             }> Submit request
             </button>
+            <ImageList images={links.slice(0, 5)}/>
         </div>
     );
 }
