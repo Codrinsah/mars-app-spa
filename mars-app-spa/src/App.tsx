@@ -7,6 +7,8 @@ import {Component2} from "./complex_tree_components/Component2";
 import {Component3} from "./complex_tree_components/Component3";
 import {Component1} from "./complex_tree_components/Component1";
 import {Component4} from "./complex_tree_components/Component4";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {NasaPhotos} from "./NasaPhotos";
 
 interface ClickContext {
   clickCount: number,
@@ -24,10 +26,21 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <NasaCard title="Title" imgSrc="Image link goes here" paragraph1="Paragraph 1" paragraph2="Paragraph 2"/>
-        <Context.Provider value = {{clickCount, setClickCount}}>
-          <Component1 />
-        </Context.Provider>
+        <Router>
+          <Switch>
+            <Route path = "/nasacard">
+              <NasaCard title="Title" imgSrc="Image link goes here" paragraph1="Paragraph 1" paragraph2="Paragraph 2"/>
+            </Route>
+            <Route path = "/nestedstate">
+              <Context.Provider value = {{clickCount, setClickCount}}>
+                <Component1 />
+              </Context.Provider>
+            </Route>
+            <Route path = "/nasaphotos">
+              <NasaPhotos/>
+            </Route>
+          </Switch>
+        </Router>
         <a
           className="App-link"
           href="https://reactjs.org"
