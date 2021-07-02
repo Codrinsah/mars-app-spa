@@ -1,4 +1,4 @@
-import React, {useCallback, useContext} from 'react'
+import React, {useContext} from 'react'
 import {Context} from "../App";
 
 const Component2: React.FC = () => {

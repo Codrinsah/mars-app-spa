@@ -4,7 +4,7 @@ const NasaCard: React.FC<{title: string, imgSrc: string, paragraph1: string, par
     return(
         <div>
             <h1> {props.title} </h1>
-            <img src = {props.imgSrc} />
+            <img src = {props.imgSrc} alt = "Placeholder text" />
             <p> {props.paragraph1} </p>
             <p> {props.paragraph2} </p>
         </div>

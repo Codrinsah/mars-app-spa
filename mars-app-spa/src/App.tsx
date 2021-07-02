@@ -2,11 +2,7 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {NasaCard} from "./NasaCard";
-import {ClickCounter} from "./ClickCounter";
-import {Component2} from "./complex_tree_components/Component2";
-import {Component3} from "./complex_tree_components/Component3";
 import {Component1} from "./complex_tree_components/Component1";
-import {Component4} from "./complex_tree_components/Component4";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {NasaPhotos} from "./NasaPhotos";
 
