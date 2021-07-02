@@ -9,16 +9,13 @@ const NasaPhotos: React.FC = () => {
         const roversResponsePromise: Promise<RoverResponse> = axios.get("http://localhost:8000/rovers")
         roversResponsePromise.then(roversResponse => {
             console.log(roversResponse);
-            console.log("RESPONSE ABOVE")
-            setRoverOptions(roversResponse.rovers.map((rover) => {
+            setRoverOptions(roversResponse.data.rovers.map((rover) => {
                 return {value: rover.name, label: rover.name};
             }));
         }).catch(error => {
             console.log(error);
         })
     },[])
-
-    console.log("RESPONSE ABOVE")
 
     return (
         <div style={{width: '300px'}}>
@@ -28,7 +25,7 @@ const NasaPhotos: React.FC = () => {
 }
 
 interface RoverResponse {
-    rovers: {name: string, cameras: {name: string}[]}[]
+    data: {rovers: {name: string, cameras: {name: string}[]}[]}
 }
 interface RoverOptions {
     value: string,
